@@ -19,6 +19,7 @@ import { DesktopNavbar } from './components/DesktopNavbar';
 import { DesktopFooter } from './components/DesktopFooter';
 import { HomeTab } from './components/tabs/HomeTab';
 import { ModulesTab } from './components/tabs/ModulesTab';
+import { BiomedicalDevicesTab } from './components/tabs/BiomedicalDevicesTab';
 import { ConsultationTab } from './components/tabs/ConsultationTab';
 import { GuidesTab } from './components/tabs/GuidesTab';
 import { ProfileTab } from './components/tabs/ProfileTab';
@@ -34,6 +35,8 @@ export default function App() {
   const [userRole, setUserRole] = useState<UserRole>('visitor');
   const [selectedPillar, setSelectedPillar] = useState<PillarId | null>(null);
   const [selectedCalculator, setSelectedCalculator] = useState<'radiation' | 'electrical' | 'green' | null>(null);
+  const [prefillConsultationTopic, setPrefillConsultationTopic] = useState<string | null>(null);
+  const [prefillConsultationNotes, setPrefillConsultationNotes] = useState<string | null>(null);
   const [pendingEmailBooking, setPendingEmailBooking] = useState<BookedConsultation | null>(null);
 
   // User state
@@ -366,9 +369,21 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'biomedical_devices' && (
+          <BiomedicalDevicesTab
+            onSelectDeviceForConsultation={(deviceName, defaultTopic) => {
+              setPrefillConsultationTopic(deviceName);
+              setPrefillConsultationNotes(defaultTopic);
+              setActiveTab('consultation');
+            }}
+          />
+        )}
+
         {activeTab === 'consultation' && (
           <ConsultationTab
             initialCalculator={selectedCalculator}
+            initialBookingTopic={prefillConsultationTopic}
+            initialBookingNotes={prefillConsultationNotes}
             onBookConsultation={handleBookConsultation}
             bookedConsultations={bookedConsultations}
             onRequestEmailNotification={(booking) => setPendingEmailBooking(booking)}

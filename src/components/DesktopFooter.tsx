@@ -71,6 +71,11 @@ export const DesktopFooter: React.FC<DesktopFooterProps> = ({ onNavigateTab, onO
             <h4 className="text-xs font-semibold text-slate-900">الأدوات والأدلة الرسمية</h4>
             <ul className="space-y-1.5 text-xs font-light text-slate-500">
               <li>
+                <button onClick={() => onNavigateTab('biomedical_devices')} className="hover:text-teal-700 font-medium text-teal-800 transition-colors cursor-pointer">
+                  استشارة الأجهزة والتشخيص بالمرض
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onNavigateTab('consultation')} className="hover:text-teal-700 transition-colors cursor-pointer">
                   حجز استشارة تخصصية
                 </button>

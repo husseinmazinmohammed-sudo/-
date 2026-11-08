@@ -1,8 +1,36 @@
-export type AppTab = 'home' | 'modules' | 'consultation' | 'guides' | 'profile';
+export type AppTab = 'home' | 'modules' | 'biomedical_devices' | 'consultation' | 'guides' | 'profile';
 
 export type UserRole = 'visitor' | 'biomedical_engineer' | 'nurse' | 'radiologist' | 'hospital_admin';
 
 export type PillarId = 'radiation' | 'electrical' | 'green_hospital' | 'healthcare_engineering';
+
+export interface BiomedicalDevice {
+  id: string;
+  name: string;
+  englishName: string;
+  category: 'radiology' | 'cardiovascular' | 'neurology' | 'respiratory' | 'ultrasound' | 'endoscopy' | 'specialized';
+  categoryLabel: string;
+  targetedDiseases: string[];
+  commonSymptoms: string[];
+  clinicalFunction: string;
+  engineeringPhysicsPrinciple: string;
+  safetyAndRadiationLevel: {
+    status: 'safe_zero_radiation' | 'monitored_ionizing' | 'high_magnetic_field' | 'isolated_electrical';
+    label: string;
+    description: string;
+    color: string;
+  };
+  instantSafetyAlert?: {
+    level: 'critical_danger' | 'warning_strict' | 'info_safe';
+    title: string;
+    keyPoints: string[];
+    immediateAction: string;
+  };
+  patientPreparations: string[];
+  typicalExamDuration: string;
+  applicableOrgans: string[];
+  deviceTag: string;
+}
 
 export interface EducationalModule {
   id: string;

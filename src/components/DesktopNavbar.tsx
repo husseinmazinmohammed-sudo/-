@@ -6,6 +6,7 @@ import {
   MessageSquareText, 
   FileText, 
   UserCheck,
+  Cpu,
   ChevronDown,
   Bell,
   BellRing,
@@ -71,6 +72,7 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
 
   const navLinks: { id: AppTab; label: string; icon: React.FC<{ className?: string }> }[] = [
     { id: 'home', label: 'الرئيسية والمحاور', icon: Home },
+    { id: 'biomedical_devices', label: 'استشارة الأجهزة والتشخيص', icon: Cpu },
     { id: 'modules', label: 'العروض التثقيفية', icon: BookOpen },
     { id: 'consultation', label: 'الاستشارات والحاسبات', icon: MessageSquareText },
     { id: 'guides', label: 'أدلة هندسة الرعاية', icon: FileText },

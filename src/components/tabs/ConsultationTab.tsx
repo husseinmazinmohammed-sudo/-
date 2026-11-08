@@ -22,6 +22,8 @@ import {
 
 interface ConsultationTabProps {
   initialCalculator?: 'radiation' | 'electrical' | 'green' | null;
+  initialBookingTopic?: string | null;
+  initialBookingNotes?: string | null;
   onBookConsultation: (consultation: BookedConsultation) => void;
   onRequestEmailNotification: (consultation: BookedConsultation) => void;
   bookedConsultations: BookedConsultation[];
@@ -29,6 +31,8 @@ interface ConsultationTabProps {
 
 export const ConsultationTab: React.FC<ConsultationTabProps> = ({
   initialCalculator = null,
+  initialBookingTopic = null,
+  initialBookingNotes = null,
   onBookConsultation,
   onRequestEmailNotification,
   bookedConsultations
@@ -63,6 +67,16 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
       setActiveCalc(initialCalculator);
     }
   }, [initialCalculator]);
+
+  useEffect(() => {
+    if (initialBookingNotes || initialBookingTopic) {
+      setActiveSideTool('booking');
+      if (initialBookingNotes) {
+        setBookNotes(initialBookingNotes);
+      }
+      setBookPillar('healthcare_engineering');
+    }
+  }, [initialBookingTopic, initialBookingNotes]);
 
   // Radiation Calc inputs
   const [initialDose, setInitialDose] = useState<number>(100); // µSv/h at 1 meter
@@ -220,7 +234,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
             }`}
           >
             <Calendar className="w-3.5 h-3.5" />
-            <span>حجز استشارة فورية</span>
+            <span>حجز استشاره هندسيه طبيه</span>
           </button>
           <button
             onClick={() => setActiveSideTool('calculators')}
@@ -361,7 +375,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-teal-700" />
-                    <span>حجز استشارة تخصصية</span>
+                    <span>حجز استشاره هندسيه طبيه</span>
                   </h3>
                 </div>
                 <p className="text-xs font-light text-slate-500 mt-1">
@@ -493,7 +507,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                   <span>
                     {isAutoSending
                       ? 'جاري تأكيد الحجز...'
-                      : 'تأكيد حجز الاستشارة'}
+                      : 'تأكيد حجز استشاره هندسيه طبيه'}
                   </span>
                 </button>
               </form>
