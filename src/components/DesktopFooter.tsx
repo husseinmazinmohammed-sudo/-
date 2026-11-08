@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, PhoneCall, GraduationCap, ArrowUp, Mail } from 'lucide-react';
+import { ShieldCheck, GraduationCap, ArrowUp, Mail } from 'lucide-react';
 import { AppTab } from '../types';
 import { TARGET_NOTIFICATION_EMAIL } from '../services/googleWorkspaceAuth';
 
@@ -95,16 +95,16 @@ export const DesktopFooter: React.FC<DesktopFooterProps> = ({ onNavigateTab, onO
 
           {/* Col 4: Rapid Contact & Emergency */}
           <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-slate-900">استجابة الطوارئ</h4>
+            <h4 className="text-xs font-semibold text-slate-900">استجابة الطوارئ السريرية</h4>
             <p className="text-xs font-light text-slate-500 leading-relaxed">
-              خطوط الاتصال المباشرة لمسؤولي الحماية الإشعاعية (RSO) وهندسة المعدات الطبية متاحة على مدار الساعة.
+              بروتوكولات الاستجابة السريعة لحوادث الإشعاع، أعطال نظام الطاقة المعزول (IPS)، والانسكابات الحيوية مع إمكانية رفع بلاغ فوري.
             </p>
             <button
               onClick={onOpenHotline}
               className="w-full bg-rose-50 hover:bg-rose-100/80 text-rose-800 border border-rose-200 py-2 px-3 rounded-xl text-xs font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-rose-600" />
-              <span>خطوط طوارئ السلامة (24/7)</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-rose-600" />
+              <span>بروتوكول طوارئ السلامة</span>
             </button>
           </div>
         </div>

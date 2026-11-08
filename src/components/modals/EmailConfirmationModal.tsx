@@ -99,14 +99,23 @@ export const EmailConfirmationModal: React.FC<EmailConfirmationModalProps> = ({
                     <span className="text-slate-400 font-light block text-[11px]">اسم الزائر:</span>
                     <span className="font-medium text-slate-800">{booking.visitorName}</span>
                   </div>
-                  <div>
-                    <span className="text-slate-400 font-light block text-[11px]">القسم / المستشفى:</span>
-                    <span className="font-medium text-slate-800">{booking.hospitalDepartment}</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-400 font-light block text-[11px]">محور الاستشارة:</span>
-                    <span className="font-medium text-teal-800">{booking.topic}</span>
-                  </div>
+                  {booking.visitorEmail ? (
+                    <div>
+                      <span className="text-slate-400 font-light block text-[11px]">البريد الإلكتروني للزائر:</span>
+                      <span className="font-mono text-xs text-slate-800" dir="ltr">{booking.visitorEmail}</span>
+                    </div>
+                  ) : (
+                    <div>
+                      <span className="text-slate-400 font-light block text-[11px]">محور الاستشارة:</span>
+                      <span className="font-medium text-teal-800">{booking.topic}</span>
+                    </div>
+                  )}
+                  {booking.visitorEmail && (
+                    <div>
+                      <span className="text-slate-400 font-light block text-[11px]">محور الاستشارة:</span>
+                      <span className="font-medium text-teal-800">{booking.topic}</span>
+                    </div>
+                  )}
                   <div>
                     <span className="text-slate-400 font-light block text-[11px]">الموعد المحدد:</span>
                     <span className="font-medium text-slate-800">

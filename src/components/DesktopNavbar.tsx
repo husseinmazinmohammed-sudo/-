@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   ShieldCheck, 
-  PhoneCall, 
   Home, 
   BookOpen, 
   MessageSquareText, 
@@ -116,8 +115,8 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
               onClick={onOpenHotline}
               className="flex items-center gap-1.5 text-rose-800 hover:text-rose-900 bg-rose-50 hover:bg-rose-100/80 px-2.5 py-0.5 rounded-full border border-rose-200 transition-colors cursor-pointer"
             >
-              <PhoneCall className="w-3 h-3 text-rose-600" />
-              <span className="font-medium text-[11px]">طوارئ السلامة 24/7</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-rose-600" />
+              <span className="font-medium text-[11px]">بروتوكول طوارئ السلامة</span>
             </button>
           </div>
         </div>

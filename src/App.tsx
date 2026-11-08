@@ -47,7 +47,6 @@ export default function App() {
       id: 'AMU-829103',
       visitorName: 'فريق فحص الجودة الإكلينيكية',
       visitorEmail: 'quality.bme@mustaqbal-hospital.iq',
-      visitorPhone: '07801234567',
       hospitalDepartment: 'غرف العمليات المركبة (Hybrid OR) — مستشفى الصادق التعليمي (بابل)',
       topic: 'استشارة السلامة الكهربائية ونظام الطاقة المعزول IPS',
       pillar: 'electrical',
@@ -280,7 +279,7 @@ export default function App() {
     const prepTask: ProfileTask = {
       id: `task-prep-${newBooking.id}`,
       title: `تحضير بيانات الاستشارة المؤكدة (#${newBooking.id}) - ${newBooking.topic}`,
-      description: `موعد الجلسة: ${newBooking.date} (${newBooking.timeSlot}) لقسم ${newBooking.hospitalDepartment}.`,
+      description: `موعد الجلسة: ${newBooking.date} (${newBooking.timeSlot})${newBooking.hospitalDepartment ? ` — ${newBooking.hospitalDepartment}` : ''}.`,
       category: 'consultation_prep',
       dueDate: newBooking.date,
       priority: newBooking.urgency === 'critical' ? 'critical' : 'high',
@@ -494,7 +493,15 @@ export default function App() {
         onEarnBadge={handleEarnBadge}
       />
 
-      {isHotlineOpen && <HotlineModal onClose={() => setIsHotlineOpen(false)} />}
+      {isHotlineOpen && (
+        <HotlineModal
+          onClose={() => setIsHotlineOpen(false)}
+          onOpenEmergencyReport={() => {
+            setIsHotlineOpen(false);
+            setActiveTab('consultation');
+          }}
+        />
+      )}
 
       <EmailConfirmationModal
         booking={pendingEmailBooking}

@@ -71,7 +71,7 @@ export interface BookedConsultation {
   visitorName: string;
   visitorEmail?: string;
   visitorPhone?: string;
-  hospitalDepartment: string;
+  hospitalDepartment?: string;
   topic: string;
   pillar: PillarId;
   date: string;

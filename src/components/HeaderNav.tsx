@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, PhoneCall, Smartphone, Monitor } from 'lucide-react';
+import { ShieldCheck, Smartphone, Monitor } from 'lucide-react';
 import { UserRole } from '../types';
 
 interface HeaderNavProps {
@@ -64,13 +64,13 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             </div>
           </div>
 
-          {/* Hotline Trigger */}
+          {/* Emergency Clinical Protocol Trigger */}
           <button
             onClick={onOpenHotline}
             className="w-8 h-8 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900 flex items-center justify-center hover:bg-rose-100 transition-colors"
-            title="أرقام طوارئ السلامة والإشعاع"
+            title="بروتوكولات طوارئ السلامة السريرية"
           >
-            <PhoneCall className="w-4 h-4" />
+            <ShieldCheck className="w-4 h-4" />
           </button>
 
           {/* Toggle iPhone Frame vs Full Responsive */}

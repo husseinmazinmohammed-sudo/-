@@ -27,33 +27,6 @@ interface ConsultationTabProps {
   bookedConsultations: BookedConsultation[];
 }
 
-const IRAQI_TEACHING_HOSPITALS = [
-  'مستشفى المستقبل التعليمي (بابل / الحلة)',
-  'مستشفى الصادق التعليمي (بابل / الحلة)',
-  'مستشفى مرجان للعلوم الباطنية والقلبية (بابل)',
-  'مجمع مدينة الطب — مستشفى بغداد التعليمي (بغداد)',
-  'مستشفى غازي الحريري للجراحات التخصصية (بغداد)',
-  'مستشفى الكاظمية التعليمي (بغداد)',
-  'مستشفى اليرموك التعليمي (بغداد)',
-  'مستشفى الكندي التعليمي (بغداد)',
-  'مستشفى ابن الهيثم التعليمي للعيون (بغداد)',
-  'مستشفى البصرة التعليمي (البصرة)',
-  'مستشفى الصدر التعليمي (البصرة)',
-  'مستشفى النجف التعليمي (النجف الأشرف)',
-  'مستشفى الصدر التعليمي (النجف الأشرف)',
-  'مستشفى الإمام الحسين التعليمي (كربلاء المقدسة)',
-  'مستشفى الحسين التعليمي (ذي قار / الناصرية)',
-  'مستشفى الجمهوري التعليمي (نينوى / الموصل)',
-  'مستشفى ابن سينا التعليمي (نينوى / الموصل)',
-  'مستشفى الفلوجة التعليمي (الأنبار)',
-  'مستشفى كركوك العام التعليمي (كركوك)',
-  'مستشفى بعقوبة التعليمي (ديالى)',
-  'مستشفى الكوت التعليمي (واسط)',
-  'مستشفى الديوانية التعليمي (القادسية)',
-  'مستشفى العمارة التعليمي (ميسان)',
-  'مستشفى السماوة التعليمي (المثنى)'
-];
-
 export const ConsultationTab: React.FC<ConsultationTabProps> = ({
   initialCalculator = null,
   onBookConsultation,
@@ -111,8 +84,6 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
   // Booking Form State
   const [bookName, setBookName] = useState('');
   const [bookVisitorEmail, setBookVisitorEmail] = useState('');
-  const [bookPhone, setBookPhone] = useState('');
-  const [bookDept, setBookDept] = useState('مستشفى المستقبل التعليمي — قسم الأجهزة الطبية');
   const [bookPillar, setBookPillar] = useState<PillarId>('radiation');
   const [bookUrgency, setBookUrgency] = useState<'routine' | 'urgent' | 'critical'>('routine');
   const [bookDate, setBookDate] = useState('2026-11-12');
@@ -194,8 +165,6 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
       id: `AMU-${Math.floor(100000 + Math.random() * 900000)}`,
       visitorName: bookName,
       visitorEmail: bookVisitorEmail.trim() || undefined,
-      visitorPhone: bookPhone.trim() || undefined,
-      hospitalDepartment: bookDept,
       topic:
         bookPillar === 'radiation'
           ? 'استشارة السلامة الإشعاعية والتدريع'
@@ -221,7 +190,6 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
     setIsAutoSending(false);
     setBookName('');
     setBookVisitorEmail('');
-    setBookPhone('');
     setBookNotes('');
   };
 
@@ -438,34 +406,16 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  <div>
-                    <label className="text-xs font-medium text-slate-700 block mb-1">البريد الإلكتروني للزائر (اختياري):</label>
-                    <input
-                      type="email"
-                      placeholder="name@uomus.edu.iq"
-                      value={bookVisitorEmail}
-                      onChange={(e) => setBookVisitorEmail(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs focus:ring-1 focus:ring-teal-500 focus:bg-white focus:outline-none"
-                      dir="ltr"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-medium text-slate-700 block mb-1">المستشفى التعليمي / القسم الصحي (العراق):</label>
-                    <input
-                      type="text"
-                      list="iraq-teaching-hospitals"
-                      placeholder="اختر أو اكتب المستشفى التعليمي في المحافظة..."
-                      value={bookDept}
-                      onChange={(e) => setBookDept(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs focus:ring-1 focus:ring-teal-500 focus:bg-white focus:outline-none"
-                    />
-                    <datalist id="iraq-teaching-hospitals">
-                      {IRAQI_TEACHING_HOSPITALS.map((hosp, hIdx) => (
-                        <option key={hIdx} value={hosp} />
-                      ))}
-                    </datalist>
-                  </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-700 block mb-1">البريد الإلكتروني للزائر (اختياري):</label>
+                  <input
+                    type="email"
+                    placeholder="name@uomus.edu.iq"
+                    value={bookVisitorEmail}
+                    onChange={(e) => setBookVisitorEmail(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs focus:ring-1 focus:ring-teal-500 focus:bg-white focus:outline-none"
+                    dir="ltr"
+                  />
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
