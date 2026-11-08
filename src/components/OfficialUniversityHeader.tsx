@@ -76,7 +76,7 @@ export const OfficialUniversityHeader: React.FC<OfficialUniversityHeaderProps> =
                   التصنيف القياسي:
                 </td>
                 <td className="py-1 px-2 text-teal-800 font-medium">
-                  فورما رسمية موحدة (A4)
+                  دليل قياسي معتمد
                 </td>
               </tr>
               <tr>

@@ -41,14 +41,14 @@ export default function App() {
     'guide-rad-safety',
     'guide-elec-safety'
   ]);
-  const [earnedBadges, setEarnedBadges] = useState<string[]>(['badge-rad']);
+  const [earnedBadges, setEarnedBadges] = useState<string[]>([]);
   const [bookedConsultations, setBookedConsultations] = useState<BookedConsultation[]>([
     {
       id: 'AMU-829103',
       visitorName: 'فريق فحص الجودة الإكلينيكية',
       visitorEmail: 'quality.bme@mustaqbal-hospital.iq',
       visitorPhone: '07801234567',
-      hospitalDepartment: 'غرف العمليات المركبة (Hybrid OR)',
+      hospitalDepartment: 'غرف العمليات المركبة (Hybrid OR) — مستشفى الصادق التعليمي (بابل)',
       topic: 'استشارة السلامة الكهربائية ونظام الطاقة المعزول IPS',
       pillar: 'electrical',
       date: '2026-11-12',
@@ -88,8 +88,8 @@ export default function App() {
     },
     {
       id: 'task-3',
-      title: 'مراجعة وطباعة الفورما الموحدة للوقاية الإشعاعية (AMU-BME-RAD-01)',
-      description: 'تصدير الفورما الرسمية بحجم A4 وتوزيعها على الكادر الهندسي والتمريضي في قسم الأشعة التشخيصية.',
+      title: 'مراجعة وتطبيق الدليل الإرشادي للوقاية الإشعاعية (AMU-BME-RAD-01)',
+      description: 'توزيع الدليل القياسي المعتمد على الكادر الهندسي والتمريضي في قسم الأشعة التشخيصية.',
       category: 'guide_review',
       dueDate: '2026-11-10',
       priority: 'critical',
@@ -100,45 +100,8 @@ export default function App() {
     }
   ]);
 
-  // In-App Notifications state
-  const [notifications, setNotifications] = useState<AppNotification[]>([
-    {
-      id: 'notif-consult-1',
-      title: 'تذكير بموعد استشارة مؤكدة (#AMU-829103)',
-      message: 'لديك جلسة استشارة مؤكدة حول "نظام الطاقة المعزول IPS" بتاريخ 2026-11-12 الساعة 11:00 صباحاً في غرف العمليات المركبة.',
-      category: 'consultation_reminder',
-      timestamp: 'منذ 5 دقائق',
-      isRead: false,
-      priority: 'high',
-      relatedTab: 'profile',
-      relatedBookingId: 'AMU-829103',
-      actionLabel: 'معاينة التذكرة في البروفايل'
-    },
-    {
-      id: 'notif-task-1',
-      title: 'مهمة جديدة في البروفايل: تجهيز سجل تيار التسريب Type CF',
-      message: 'يرجى إتمام فحص القبول الأولي وتجهيز القراءات الهندسية قبل موعد الاستشارة القادم لضمان دقة التقييم.',
-      category: 'profile_task',
-      timestamp: 'منذ 15 دقيقة',
-      isRead: false,
-      priority: 'urgent',
-      relatedTab: 'profile',
-      relatedTaskId: 'task-1',
-      actionLabel: 'فتح مهام البروفايل'
-    },
-    {
-      id: 'notif-guide-1',
-      title: 'اعتماد الفورما الرسمية الموحدة للطباعة (A4) لجامعة المستقبل',
-      message: 'تم توحيد جميع الأدلة في فورما قياسية منظمة بجداول رسمية جاهزة للطباعة المباشرة وتصدير PDF.',
-      category: 'guide_release',
-      timestamp: 'اليوم',
-      isRead: false,
-      priority: 'normal',
-      relatedTab: 'guides',
-      relatedGuideId: 'guide-rad-safety',
-      actionLabel: 'معاينة وطباعة الفورما'
-    }
-  ]);
+  // In-App Notifications state (dynamically populated by actual user actions)
+  const [notifications, setNotifications] = useState<AppNotification[]>([]);
 
   const [activeToast, setActiveToast] = useState<AppNotification | null>(null);
 
@@ -280,6 +243,10 @@ export default function App() {
     });
   };
 
+  const handleResetBadges = () => {
+    setEarnedBadges([]);
+  };
+
   const handleOpenCalculator = (calcId: 'radiation' | 'electrical' | 'green') => {
     setSelectedCalculator(calcId);
     setActiveTab('consultation');
@@ -324,8 +291,8 @@ export default function App() {
     setProfileTasks((prev) => [prepTask, ...prev]);
 
     pushNotification({
-      title: `تم تأكيد الحجز (#${newBooking.id}) وإرسال الإشعار التلقائي لبريد المنصة`,
-      message: `تم إرسال إشعار الحجز تلقائياً إلى hassinmazin301@gmail.com وتفعيل تذكير الموعد (${newBooking.date} - ${newBooking.timeSlot}) في البروفايل.`,
+      title: `تم تأكيد حجز الاستشارة (#${newBooking.id})`,
+      message: `تم تثبيت موعد الاستشارة (${newBooking.date} - ${newBooking.timeSlot}) وتفعيل تذكير الموعد في البروفايل.`,
       category: 'consultation_reminder',
       priority: newBooking.urgency === 'critical' ? 'urgent' : 'high',
       relatedTab: 'profile',
@@ -347,8 +314,8 @@ export default function App() {
       )
     );
     pushNotification({
-      title: `تم إرسال إشعار البريد للتذكرة (#${bookingId}) تلقائياً`,
-      message: 'تم إرسال تفاصيل حجز الاستشارة مباشرة إلى البريد المعتمد hassinmazin301@gmail.com بدون تسجيل دخول.',
+      title: `تم إرسال إشعار التذكرة (#${bookingId})`,
+      message: 'تم إرسال تفاصيل جلسة الاستشارة إلى البريد المعتمد بنجاح.',
       category: 'system_update',
       priority: 'normal',
       relatedTab: 'profile',
@@ -442,6 +409,7 @@ export default function App() {
             profileTasks={profileTasks}
             onToggleProfileTask={handleToggleProfileTask}
             onAddProfileTask={handleAddProfileTask}
+            onResetBadges={handleResetBadges}
           />
         )}
       </main>
@@ -467,6 +435,7 @@ export default function App() {
                 <button
                   onClick={() => {
                     handleNotificationNavigate(activeToast);
+                    handleDeleteNotification(activeToast.id);
                     setActiveToast(null);
                   }}
                   className="pt-1 text-[11px] font-semibold text-teal-700 hover:text-teal-900 flex items-center gap-1 cursor-pointer"
@@ -479,8 +448,12 @@ export default function App() {
           </div>
 
           <button
-            onClick={() => setActiveToast(null)}
+            onClick={() => {
+              handleDeleteNotification(activeToast.id);
+              setActiveToast(null);
+            }}
             className="text-slate-400 hover:text-slate-700 p-1 cursor-pointer shrink-0"
+            title="إغلاق وحذف التنبيه"
           >
             <X className="w-4 h-4" />
           </button>

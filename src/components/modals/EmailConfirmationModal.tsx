@@ -73,10 +73,10 @@ export const EmailConfirmationModal: React.FC<EmailConfirmationModalProps> = ({
               <div className="bg-teal-50/60 border border-teal-200 rounded-2xl p-4 space-y-1.5">
                 <p className="text-xs font-semibold text-teal-950 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-teal-700" />
-                  <span>إرسال مباشر بدون تسجيل دخول الزائر</span>
+                  <span>إشعار بريد تذكرة الاستشارة</span>
                 </p>
                 <p className="text-xs font-light text-teal-800 leading-relaxed">
-                  يتم إرسال بيانات تذكرة الاستشارة رقم ({booking.id}) مباشرة إلى البريد المعتمد للمنصة:
+                  يتم إرسال بيانات تذكرة الاستشارة رقم ({booking.id}) إلى البريد المعتمد للمنصة:
                 </p>
                 <div className="pt-1 flex items-center gap-2">
                   <span
@@ -127,7 +127,7 @@ export const EmailConfirmationModal: React.FC<EmailConfirmationModalProps> = ({
               <p className="text-xs font-light text-slate-600 max-w-md mx-auto leading-relaxed">
                 تم إرسال الإشعار البريدي بتفاصيل التذكرة{' '}
                 <strong className="font-mono text-slate-900">{booking.id}</strong> مباشرة إلى{' '}
-                <strong className="font-mono text-teal-800">{TARGET_NOTIFICATION_EMAIL}</strong> بدون الحاجة لأي تسجيل دخول.
+                <strong className="font-mono text-teal-800">{TARGET_NOTIFICATION_EMAIL}</strong> بنجاح.
               </p>
             </div>
           )}

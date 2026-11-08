@@ -27,6 +27,33 @@ interface ConsultationTabProps {
   bookedConsultations: BookedConsultation[];
 }
 
+const IRAQI_TEACHING_HOSPITALS = [
+  'مستشفى المستقبل التعليمي (بابل / الحلة)',
+  'مستشفى الصادق التعليمي (بابل / الحلة)',
+  'مستشفى مرجان للعلوم الباطنية والقلبية (بابل)',
+  'مجمع مدينة الطب — مستشفى بغداد التعليمي (بغداد)',
+  'مستشفى غازي الحريري للجراحات التخصصية (بغداد)',
+  'مستشفى الكاظمية التعليمي (بغداد)',
+  'مستشفى اليرموك التعليمي (بغداد)',
+  'مستشفى الكندي التعليمي (بغداد)',
+  'مستشفى ابن الهيثم التعليمي للعيون (بغداد)',
+  'مستشفى البصرة التعليمي (البصرة)',
+  'مستشفى الصدر التعليمي (البصرة)',
+  'مستشفى النجف التعليمي (النجف الأشرف)',
+  'مستشفى الصدر التعليمي (النجف الأشرف)',
+  'مستشفى الإمام الحسين التعليمي (كربلاء المقدسة)',
+  'مستشفى الحسين التعليمي (ذي قار / الناصرية)',
+  'مستشفى الجمهوري التعليمي (نينوى / الموصل)',
+  'مستشفى ابن سينا التعليمي (نينوى / الموصل)',
+  'مستشفى الفلوجة التعليمي (الأنبار)',
+  'مستشفى كركوك العام التعليمي (كركوك)',
+  'مستشفى بعقوبة التعليمي (ديالى)',
+  'مستشفى الكوت التعليمي (واسط)',
+  'مستشفى الديوانية التعليمي (القادسية)',
+  'مستشفى العمارة التعليمي (ميسان)',
+  'مستشفى السماوة التعليمي (المثنى)'
+];
+
 export const ConsultationTab: React.FC<ConsultationTabProps> = ({
   initialCalculator = null,
   onBookConsultation,
@@ -38,10 +65,10 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
     {
       id: 'welcome-msg',
       sender: 'specialist',
-      text: 'أهلاً بك في منصة الاستشارات الهندسية والسريرية المباشرة — جامعة المستقبل (كلية التقنيات الهندسية - قسم هندسة تقنيات الأجهزة الطبية). يمكنك طرح أي استفسار يخص معايير الوقاية الإشعاعية ALARA، تيارات التسريب الكهربائي وفق IEC 60601-1، إدارة الصيانة الوقائية، أو متطلبات المستشفيات الخضراء.',
+      text: 'أهلاً بك في منصة الاستشارات الهندسية والسريرية المباشرة — جامعة المستقبل (كلية التقنيات الهندسية - قسم هندسة تقنيات الأجهزة الطبية). يمكنك طرح أي استفسار يخص معايير الوقاية الإشعاعية ALARA وتراخيص مديرية الوقاية من الإشعاع العراقية، تيارات التسريب الكهربائي وفق IEC 60601-1 وشبكة 220V/50Hz، إدارة الصيانة الوقائية PPM في المستشفيات التعليمية، أو متطلبات المستشفيات الخضراء.',
       timestamp: 'الآن',
       specialistRole: 'استشاري السلامة وهندسة تقنيات الأجهزة الطبية',
-      tags: ['IEC 60601-1', 'ICRP 103', 'WHO GGHH', 'NFPA 99']
+      tags: ['IEC 60601-1 (220V/50Hz)', 'ICRP 103 / الرقابة العراقية', 'WHO GGHH', 'NFPA 99']
     }
   ]);
   const [inputQuery, setInputQuery] = useState('');
@@ -85,7 +112,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
   const [bookName, setBookName] = useState('');
   const [bookVisitorEmail, setBookVisitorEmail] = useState('');
   const [bookPhone, setBookPhone] = useState('');
-  const [bookDept, setBookDept] = useState('قسم الأشعة التشخيصية والقسطرة');
+  const [bookDept, setBookDept] = useState('مستشفى المستقبل التعليمي — قسم الأجهزة الطبية');
   const [bookPillar, setBookPillar] = useState<PillarId>('radiation');
   const [bookUrgency, setBookUrgency] = useState<'routine' | 'urgent' | 'critical'>('routine');
   const [bookDate, setBookDate] = useState('2026-11-12');
@@ -210,7 +237,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
             <span>مركز الاستشارات التخصصية والحاسبات الهندسية</span>
           </h1>
           <p className="text-xs font-light text-slate-600 mt-1">
-            حجز مباشر للزوار بدون تسجيل دخول — يرسل النظام إشعاراً تلقائياً فور الحجز إلى ({TARGET_NOTIFICATION_EMAIL})
+            خدمة الاستشارات الهندسية والسريرية المعتمدة لجامعة المستقبل — حجز ومتابعة الجلسات
           </p>
         </div>
 
@@ -358,7 +385,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
           </div>
         </div>
 
-        {/* Right Column (5 cols): Booking with Automatic Zero-Login Email Notification OR Calculators */}
+        {/* Right Column (5 cols): Booking Consultation OR Calculators */}
         <div className="lg:col-span-5 space-y-4">
           {activeSideTool === 'booking' && (
             <div className="bg-white border border-teal-200/80 rounded-3xl p-6 shadow-2xs space-y-4">
@@ -366,25 +393,12 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-teal-700" />
-                    <span>حجز استشارة تخصصية (بدون تسجيل دخول)</span>
+                    <span>حجز استشارة تخصصية</span>
                   </h3>
-                  <span className="text-[10px] font-medium bg-teal-50 text-teal-800 px-2.5 py-0.5 rounded-full border border-teal-200">
-                    إشعار تلقائي مباشر
-                  </span>
                 </div>
                 <p className="text-xs font-light text-slate-500 mt-1">
-                  يرسل النظام إشعار الحجز تلقائياً وفوراً إلى البريد الرسمي: <strong className="font-mono text-teal-800" dir="ltr">{TARGET_NOTIFICATION_EMAIL}</strong>
+                  حدد بيانات الجلسة والموعد المناسب مع استشاريي السلامة وهندسة الأجهزة الطبية.
                 </p>
-              </div>
-
-              {/* Zero-Login Automatic Notification Info Banner */}
-              <div className="bg-teal-50/60 border border-teal-200/80 rounded-2xl p-3 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2 text-xs">
-                  <MailCheck className="w-4 h-4 text-teal-700 shrink-0" />
-                  <span className="font-light text-teal-900">
-                    متاح للزوار مباشرة بدون تسجيل دخول — يتم إرسال الإشعار تلقائياً عند تأكيد الحجز.
-                  </span>
-                </div>
               </div>
 
               {/* Instant Receipt Banner when a visitor submits a booking */}
@@ -437,14 +451,20 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-slate-700 block mb-1">القسم أو المنشأة الصحية:</label>
+                    <label className="text-xs font-medium text-slate-700 block mb-1">المستشفى التعليمي / القسم الصحي (العراق):</label>
                     <input
                       type="text"
-                      placeholder="مثال: مستشفى المستقبل التعليمي"
+                      list="iraq-teaching-hospitals"
+                      placeholder="اختر أو اكتب المستشفى التعليمي في المحافظة..."
                       value={bookDept}
                       onChange={(e) => setBookDept(e.target.value)}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs focus:ring-1 focus:ring-teal-500 focus:bg-white focus:outline-none"
                     />
+                    <datalist id="iraq-teaching-hospitals">
+                      {IRAQI_TEACHING_HOSPITALS.map((hosp, hIdx) => (
+                        <option key={hIdx} value={hosp} />
+                      ))}
+                    </datalist>
                   </div>
                 </div>
 
@@ -522,8 +542,8 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                   <FileCheck className="w-4 h-4" />
                   <span>
                     {isAutoSending
-                      ? 'جاري تأكيد الحجز وإرسال الإشعار التلقائي...'
-                      : `تأكيد الحجز وإرسال الإشعار فوراً إلى ${TARGET_NOTIFICATION_EMAIL}`}
+                      ? 'جاري تأكيد الحجز...'
+                      : 'تأكيد حجز الاستشارة'}
                   </span>
                 </button>
               </form>
@@ -532,7 +552,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
               {bookedConsultations.length > 0 && (
                 <div className="pt-3 border-t border-slate-100 space-y-2">
                   <span className="text-[11px] font-semibold text-slate-500 block">
-                    آخر التذاكر المحجوزة وحالة الإشعار التلقائي:
+                    سجل التذاكر المحجوزة:
                   </span>
                   <div className="space-y-2 max-h-44 overflow-y-auto pr-1">
                     {bookedConsultations.slice(0, 3).map((tkt) => (
@@ -697,7 +717,7 @@ export const ConsultationTab: React.FC<ConsultationTabProps> = ({
                     </div>
                     <div>
                       <h3 className="text-xs font-semibold text-slate-800">مدقق الأمان الكهربائي للأجهزة الطبية</h3>
-                      <span className="text-[10px] text-slate-400 font-mono">IEC 60601-1 / IEC 62353</span>
+                      <span className="text-[10px] text-slate-400 font-mono">IEC 60601-1 / IEC 62353 · الشبكة العراقية 220V/50Hz</span>
                     </div>
                   </div>
 

@@ -55,6 +55,7 @@ interface ProfileTabProps {
   profileTasks: ProfileTask[];
   onToggleProfileTask: (taskId: string) => void;
   onAddProfileTask: (title: string, description: string, dueDate: string, priority: ProfileTask['priority'], pillar: PillarId) => void;
+  onResetBadges?: () => void;
 }
 
 export const ProfileTab: React.FC<ProfileTabProps> = ({
@@ -73,7 +74,8 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
   onTriggerConsultationReminder,
   profileTasks,
   onToggleProfileTask,
-  onAddProfileTask
+  onAddProfileTask,
+  onResetBadges
 }) => {
   const [notifCategoryFilter, setNotifCategoryFilter] = useState<'all' | 'consultation_reminder' | 'profile_task'>('all');
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
@@ -84,7 +86,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
   const [newTaskPillar, setNewTaskPillar] = useState<PillarId>('electrical');
 
   const roleNames: Record<UserRole, string> = {
-    visitor: 'زائر المنشأة الصحية',
+    visitor: 'زائر',
     biomedical_engineer: 'مهندس أجهزة طبية معتمد',
     nurse: 'كادر تمريض إكلينيكي',
     radiologist: 'أخصائي فيزياء وأشعة تشخيصية',
@@ -215,7 +217,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <span className="text-2xl font-semibold font-mono text-purple-700 mt-1 block">
               {bookedConsultations.length} <span className="text-xs text-slate-400 font-normal">تذاكر مجدولة</span>
             </span>
-            <span className="text-[11px] text-slate-400 block mt-1">مرتبطة بـ {TARGET_NOTIFICATION_EMAIL}</span>
+            <span className="text-[11px] text-slate-400 block mt-1">مواعيد جلسات الاستشارة المعتمدة</span>
           </div>
         </div>
       </div>
@@ -543,9 +545,20 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
               <Award className="w-4 h-4 text-amber-600" />
               <span>أوسمة التحقق المعرفي والمهني</span>
             </h2>
-            <span className="text-xs text-slate-400 font-light">
-              نسبة الإنجاز: {Math.round((earnedBadges.length / 4) * 100)}%
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-slate-400 font-light">
+                نسبة الإنجاز: {Math.round((earnedBadges.length / 4) * 100)}%
+              </span>
+              {earnedBadges.length > 0 && onResetBadges && (
+                <button
+                  type="button"
+                  onClick={onResetBadges}
+                  className="text-[11px] text-rose-600 hover:text-rose-800 hover:underline cursor-pointer font-light"
+                >
+                  إعادة تعيين الأوسمة
+                </button>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -593,7 +606,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
 
         {/* Tickets and Bookmarked Guides (6 cols) */}
         <div className="lg:col-span-6 space-y-6">
-          {/* Booked Consultations with In-App Reminder Trigger & Gmail Notification */}
+          {/* Booked Consultations with In-App Reminder Trigger & Email Notification */}
           <div className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-2xs space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
@@ -641,7 +654,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                             className="text-[10px] font-medium text-teal-700 hover:text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 px-2 py-0.5 rounded-md flex items-center gap-1 transition-colors cursor-pointer"
                           >
                             <Send className="w-3 h-3" />
-                            <span>إشعار Gmail</span>
+                            <span>إشعار البريد</span>
                           </button>
                         )}
                         <span className="text-xs font-medium text-teal-700 flex items-center gap-1">
@@ -673,7 +686,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
                 <Bookmark className="w-4 h-4 text-teal-600" />
-                <span>الأدلة الاسترشادية المحفوظة (جامعة المستقبل PDF)</span>
+                <span>الأدلة الاسترشادية المحفوظة</span>
               </h2>
               <span className="text-xs text-slate-400 font-light">
                 {savedGuidesList.length} أدلة
@@ -711,7 +724,7 @@ export const ProfileTab: React.FC<ProfileTabProps> = ({
                       className="bg-teal-700 hover:bg-teal-800 text-white text-[11px] font-medium px-3 py-1.5 rounded-lg flex items-center gap-1.5 shrink-0 cursor-pointer"
                     >
                       <Printer className="w-3 h-3" />
-                      <span>طباعة PDF</span>
+                      <span>طباعة الدليل</span>
                     </button>
                   </div>
                 ))}

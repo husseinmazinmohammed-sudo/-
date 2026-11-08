@@ -18,7 +18,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onOpenHotline
 }) => {
   const roles: { id: UserRole; label: string }[] = [
-    { id: 'visitor', label: 'زائر المنشأة' },
+    { id: 'visitor', label: 'زائر' },
     { id: 'biomedical_engineer', label: 'مهندس طبي' },
     { id: 'nurse', label: 'كادر تمريضي' },
     { id: 'radiologist', label: 'فني/طبيب أشعة' },

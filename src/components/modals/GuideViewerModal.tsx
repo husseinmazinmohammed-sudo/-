@@ -111,7 +111,7 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
             </span>
             <div className="flex items-center gap-1.5 text-xs font-semibold text-teal-950">
               <FileText className="w-4 h-4 text-teal-700" />
-              <span>الفورما الرسمية الموحدة للدليل القياسي (A4) — جامعة المستقبل</span>
+              <span>الدليل الإرشادي المعتمد — جامعة المستقبل</span>
             </div>
           </div>
 
@@ -143,12 +143,12 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
               {isGeneratingPdf ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>جاري تجهيز الفورما الموحدة...</span>
+                  <span>جاري تجهيز الدليل...</span>
                 </>
               ) : (
                 <>
                   <Printer className="w-4 h-4" />
-                  <span>طباعة / تحميل الفورما الموحدة (PDF)</span>
+                  <span>طباعة الدليل</span>
                 </>
               )}
             </button>
@@ -181,10 +181,10 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
             <div className="flex items-center gap-2 text-xs text-teal-900">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span className="font-semibold">
-                تم تجهيز الفورما الرسمية الموحدة بحجم A4 ({pdfResult.filename})
+                تم تجهيز الدليل الرسمي ({pdfResult.filename})
               </span>
               <span className="text-[11px] font-light text-teal-700 hidden sm:inline">
-                — منظمة بجدول قياسي موحد لجامعة المستقبل
+                — معتمد لقسم هندسة تقنيات الأجهزة الطبية
               </span>
             </div>
 
@@ -194,7 +194,7 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
                 className="bg-teal-700 hover:bg-teal-800 text-white text-xs font-medium px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>تنزيل ملف PDF الموحد</span>
+                <span>تحميل الدليل</span>
               </button>
 
               <a
@@ -204,7 +204,7 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
                 className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
-                <span>فتح الفورما في نافذة الطباعة المباشرة (A4)</span>
+                <span>فتح الدليل للطباعة المباشرة</span>
               </a>
             </div>
           </div>
@@ -234,7 +234,7 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
           <div className="text-xs font-light text-slate-600 flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-teal-600" />
             <span>
-              جميع الأدلة مصممة بـ <strong className="font-semibold text-teal-900">فورما رسمية موحدة (A4 SOP Form)</strong> معتمدة لقسم هندسة تقنيات الأجهزة الطبية.
+              جميع الأدلة مصممة وفق المعايير السريرية المعتمدة لقسم هندسة تقنيات الأجهزة الطبية بجامعة المستقبل.
             </span>
           </div>
 
@@ -253,7 +253,7 @@ export const GuideViewerModal: React.FC<GuideViewerModalProps> = ({
               className="bg-teal-700 hover:bg-teal-800 active:scale-98 disabled:opacity-60 text-white text-xs font-medium py-2 px-5 rounded-xl flex items-center gap-2 shadow-2xs transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />
-              <span>طباعة وتحميل الفورما الموحدة (PDF)</span>
+              <span>طباعة الدليل</span>
             </button>
           </div>
         </div>

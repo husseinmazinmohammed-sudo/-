@@ -99,7 +99,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
                 className="bg-teal-700 hover:bg-teal-800 active:scale-98 text-white text-xs font-medium py-3 px-5 rounded-xl flex items-center gap-2 shadow-2xs transition-all cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-teal-100" />
-                <span>حجز استشارة فورية (إشعار تلقائي للبريد)</span>
+                <span>حجز استشارة تخصصية</span>
                 <ArrowLeft className="w-3.5 h-3.5" />
               </button>
 
@@ -115,7 +115,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
                 className="bg-white/80 hover:bg-white text-slate-700 text-xs font-light py-3 px-5 rounded-xl flex items-center gap-2 transition-colors border border-slate-200/80 cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5 text-teal-700" />
-                <span>الفورما الرسمية الموحدة (PDF)</span>
+                <span>الأدلة الاسترشادية المعتمدة</span>
               </button>
             </div>
           </div>
@@ -435,7 +435,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
             <div className="flex items-center justify-between text-teal-800 text-xs font-medium">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-teal-700" />
-                <span>فورما رسمية موحدة للطباعة (A4 PDF)</span>
+                <span>دليل إرشادي معتمد للطباعة</span>
               </span>
               <span className="text-[10px] font-mono bg-white text-teal-900 border border-teal-200 px-2 py-0.5 rounded-md">
                 AMU-BME-MGMT-04
@@ -457,7 +457,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
                 className="flex-1 bg-teal-700 hover:bg-teal-800 active:scale-98 text-white text-xs font-medium py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-2xs"
               >
                 <FileBadge className="w-3.5 h-3.5" />
-                <span>تصفح وطباعة الفورما الموحدة</span>
+                <span>تصفح وطباعة الدليل</span>
               </button>
 
               <button

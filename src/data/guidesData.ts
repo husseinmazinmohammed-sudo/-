@@ -53,7 +53,7 @@ export const POCKET_GUIDES: PocketGuide[] = [
         criticalCheck: 'إبلاغ مسؤول الحماية الإشعاعية (RSO) فوراً عند تجاوز مستويات الجرعة المرجعية التشخيصية (DRL).'
       }
     ],
-    standardsReference: ['ICRP Publication 103', 'IAEA General Safety Requirements GSR Part 3', 'NCRP Report No. 147'],
+    standardsReference: ['ICRP Publication 103', 'IAEA GSR Part 3', 'تعليمات مديرية الوقاية من الإشعاع (العراق)'],
     pdfSummary: `جامعة المستقبل - كلية التقنيات الهندسية - قسم هندسة تقنيات الأجهزة الطبية
 الدليل الاسترشادي الرسمي: السلامة والوقاية الإشعاعية الطبية (كود AMU-BME-RAD-01)
 المعيار المرجعي: ICRP 103 / IAEA GSR Part 3
@@ -124,7 +124,7 @@ export const POCKET_GUIDES: PocketGuide[] = [
         criticalCheck: 'للأجهزة القلبية Type CF: يجب ألا يتجاوز تيار التسريب 10 ميكرو أمبير (10 µA) قطعياً في الحالة الطبيعية!'
       }
     ],
-    standardsReference: ['IEC 60601-1 Edition 3.2', 'IEC 62353 Recurrent Testing Standard', 'NFPA 99 Health Care Facilities Code'],
+    standardsReference: ['IEC 60601-1 (الشبكة العراقية 220V/50Hz)', 'IEC 62353 Recurrent Testing', 'تعليمات وزارة الصحة العراقية لأنظمة IPS'],
     pdfSummary: `جامعة المستقبل - كلية التقنيات الهندسية - قسم هندسة تقنيات الأجهزة الطبية
 بروتوكول السلامة الكهربائية للأجهزة الطبية (كود AMU-BME-ELEC-02)
 المعيار المرجعي: IEC 60601-1 / IEC 62353 / NFPA 99
@@ -193,7 +193,7 @@ export const POCKET_GUIDES: PocketGuide[] = [
         criticalCheck: 'التأكد من خلو المنشأة بنسبة 100% من مقاييس الضغط والحرارة الزئبقية.'
       }
     ],
-    standardsReference: ['WHO Safe Management of Wastes from Health-care Activities', 'GGHH 10 Sustainability Goals', 'LEED for Healthcare v4.1'],
+    standardsReference: ['WHO Safe Healthcare Waste Management', 'GGHH 10 Goals', 'دليل إدارة النفايات لوزارة الصحة والبيئة العراقية'],
     pdfSummary: `جامعة المستقبل - كلية التقنيات الهندسية - قسم هندسة تقنيات الأجهزة الطبية
 خريطة طريق المستشفيات الخضراء والاستدامة الصحية (كود AMU-BME-ECO-03)
 المعيار المرجعي: شبكة GGHH العالمية / منظمة الصحة العالمية WHO

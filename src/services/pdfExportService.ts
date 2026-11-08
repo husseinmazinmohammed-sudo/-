@@ -175,8 +175,8 @@ export function buildUnifiedOfficialPrintHtml(guide: PocketGuide, autoPrint = tr
 </head>
 <body>
   <div class="toolbar-no-print">
-    <span>الفورما الرسمية الموحدة للطباعة (A4) — جامعة المستقبل · قسم هندسة تقنيات الأجهزة الطبية (${guide.arabicCode})</span>
-    <button onclick="window.print()">طباعة الفورما الرسمية الآن (Print / Save as PDF)</button>
+    <span>الدليل الإرشادي المعتمد للطباعة — جامعة المستقبل · قسم هندسة تقنيات الأجهزة الطبية (${guide.arabicCode})</span>
+    <button onclick="window.print()">طباعة الدليل الآن</button>
   </div>
 
   <div class="a4-sheet">
@@ -189,9 +189,9 @@ export function buildUnifiedOfficialPrintHtml(guide: PocketGuide, autoPrint = tr
           <div style="font-size: 11.5px; font-weight: 600; color: #115e59; margin-top: 2px;">كلية التقنيات الهندسية · قسم هندسة تقنيات الأجهزة الطبية</div>
         </td>
         <td style="width: 24%; text-align: center; background: #ffffff; padding: 8px;">
-          <div style="font-size: 12px; font-weight: 700; color: #0f766e;">استمارة الدليل القياسي الموحد</div>
+          <div style="font-size: 12px; font-weight: 700; color: #0f766e;">استمارة الدليل القياسي المعتمد</div>
           <div style="font-size: 9.5px; font-family: monospace; color: #475569; margin-top: 2px;">AL-MUSTAQBAL UNIVERSITY</div>
-          <div style="font-size: 9.5px; font-family: monospace; color: #0f766e; font-weight: 600; margin-top: 2px;">STANDARD SOP FORM (A4)</div>
+          <div style="font-size: 9.5px; font-family: monospace; color: #0f766e; font-weight: 600; margin-top: 2px;">STANDARD SOP FORM</div>
         </td>
         <td style="width: 34%; background: #ffffff; padding: 0;">
           <table style="width: 100%; border-collapse: collapse; font-size: 10.5px;">
@@ -215,7 +215,6 @@ export function buildUnifiedOfficialPrintHtml(guide: PocketGuide, autoPrint = tr
     <!-- Section 1: Document Identification -->
     <div class="section-bar">
       <span>القسم الأول: بيانات الوثيقة القياسية والمجال التطبيقي</span>
-      <span style="font-family: monospace; font-size: 10px;">SECTION 01 · DOCUMENT IDENTIFICATION</span>
     </div>
     <table class="form-table">
       <tr>
@@ -237,7 +236,6 @@ export function buildUnifiedOfficialPrintHtml(guide: PocketGuide, autoPrint = tr
     <!-- Section 2: Mandatory Safety Rules -->
     <div class="section-bar">
       <span>القسم الثاني: المرتكزات والقواعد الإلزامية للسلامة المهنية والسريرية</span>
-      <span style="font-family: monospace; font-size: 10px;">SECTION 02 · MANDATORY SAFETY RULES</span>
     </div>
     <table class="form-table">
       <thead>
@@ -255,7 +253,6 @@ export function buildUnifiedOfficialPrintHtml(guide: PocketGuide, autoPrint = tr
     <!-- Section 3: Technical Spec Table -->
     <div class="section-bar">
       <span>القسم الثالث: ${guide.specTable.title}</span>
-      <span style="font-family: monospace; font-size: 10px;">SECTION 03 · STANDARD PARAMETERS</span>
     </div>
     <table class="form-table">
       <thead>
@@ -269,7 +266,6 @@ export function buildUnifiedOfficialPrintHtml(guide: PocketGuide, autoPrint = tr
     <!-- Section 4: Field Execution Protocol Table -->
     <div class="section-bar">
       <span>القسم الرابع: جدول البروتوكول التنفيذي الميداني وقائمة الفحص الحرجة</span>
-      <span style="font-family: monospace; font-size: 10px;">SECTION 04 · SOP EXECUTION MATRIX</span>
     </div>
     <table class="form-table">
       <thead>

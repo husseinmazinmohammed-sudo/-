@@ -66,13 +66,13 @@ export const DesktopFooter: React.FC<DesktopFooterProps> = ({ onNavigateTab, onO
             </ul>
           </div>
 
-          {/* Col 3: Rapid Tools & Official PDF Guides */}
+          {/* Col 3: Rapid Tools & Official Guides */}
           <div className="space-y-2.5">
-            <h4 className="text-xs font-semibold text-slate-900">الأدوات والأدلة الرسمية (PDF)</h4>
+            <h4 className="text-xs font-semibold text-slate-900">الأدوات والأدلة الرسمية</h4>
             <ul className="space-y-1.5 text-xs font-light text-slate-500">
               <li>
                 <button onClick={() => onNavigateTab('consultation')} className="hover:text-teal-700 transition-colors cursor-pointer">
-                  حجز استشارة وإشعار البريد (Gmail API)
+                  حجز استشارة تخصصية
                 </button>
               </li>
               <li>
@@ -87,7 +87,7 @@ export const DesktopFooter: React.FC<DesktopFooterProps> = ({ onNavigateTab, onO
               </li>
               <li>
                 <button onClick={() => onNavigateTab('guides')} className="hover:text-teal-700 transition-colors cursor-pointer">
-                  مكتبة الأدلة الاسترشادية لجامعة المستقبل (A4 PDF)
+                  مكتبة الأدلة الاسترشادية المعتمدة
                 </button>
               </li>
             </ul>

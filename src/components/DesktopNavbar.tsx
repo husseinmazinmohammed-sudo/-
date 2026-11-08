@@ -8,7 +8,6 @@ import {
   FileText, 
   UserCheck,
   ChevronDown,
-  MailCheck,
   Bell,
   BellRing,
   CheckCheck,
@@ -19,7 +18,6 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { AppTab, UserRole, AppNotification } from '../types';
-import { TARGET_NOTIFICATION_EMAIL } from '../services/googleWorkspaceAuth';
 
 interface DesktopNavbarProps {
   activeTab: AppTab;
@@ -65,7 +63,7 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
   }, []);
 
   const roles: { id: UserRole; label: string }[] = [
-    { id: 'visitor', label: 'زائر المنشأة' },
+    { id: 'visitor', label: 'زائر' },
     { id: 'biomedical_engineer', label: 'مهندس أجهزة طبية' },
     { id: 'nurse', label: 'كادر تمريضي' },
     { id: 'radiologist', label: 'أخصائي أشعة' },
@@ -357,17 +355,6 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
               ))}
             </select>
             <ChevronDown className="w-3.5 h-3.5 text-slate-400 pointer-events-none absolute left-2" />
-          </div>
-
-          {/* Zero-Login Automatic Notification Status Pill */}
-          <div
-            className="hidden sm:flex items-center gap-1.5 bg-teal-50/90 border border-teal-200/80 px-2.5 py-1.5 rounded-xl text-xs"
-            title={`تصفح مباشر للزائر — يتم إرسال إشعارات الحجز تلقائياً إلى ${TARGET_NOTIFICATION_EMAIL}`}
-          >
-            <MailCheck className="w-3.5 h-3.5 text-teal-700" />
-            <span className="text-[11px] font-medium text-teal-900">
-              إشعار تلقائي مباشر
-            </span>
           </div>
         </div>
       </div>

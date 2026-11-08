@@ -49,10 +49,10 @@ export const GuidesTab: React.FC<GuidesTabProps> = ({
               <span>جامعة المستقبل (الجامعة الأهلية الأولى في العراق) — كلية التقنيات الهندسية / قسم هندسة تقنيات الأجهزة الطبية</span>
             </div>
             <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
-              <span>مكتبة الأدلة الاسترشادية والوثائق القياسية المعتمدة (A4 PDF)</span>
+              <span>مكتبة الأدلة الاسترشادية والوثائق القياسية المعتمدة</span>
             </h1>
             <p className="text-xs font-light text-slate-500">
-              أدلة علمية وسريرية منظمة بجداول معيارية وقوائم تحقق وترويسة أكاديمية رسمية جاهزة للطباعة المباشرة بصيغة PDF
+              أدلة علمية وسريرية منظمة بجداول معيارية وقوائم تحقق وترويسة أكاديمية رسمية معتمدة
             </p>
           </div>
 
@@ -183,22 +183,22 @@ export const GuidesTab: React.FC<GuidesTabProps> = ({
                   className="flex-1 bg-teal-700 hover:bg-teal-800 active:scale-98 text-white text-xs font-medium py-2.5 px-3.5 rounded-xl flex items-center justify-center gap-1.5 shadow-2xs transition-all cursor-pointer"
                 >
                   <BookOpen className="w-4 h-4" />
-                  <span>تصفح الدليل المنظم</span>
+                  <span>تصفح الدليل</span>
                 </button>
 
                 <button
                   onClick={() => onOpenGuideModal(guide, true)}
                   className="bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white text-xs font-medium py-2.5 px-3.5 rounded-xl flex items-center justify-center gap-1.5 shadow-2xs transition-all cursor-pointer"
-                  title="توليد وطباعة ملف PDF رسمي بحجم A4 لجامعة المستقبل"
+                  title="طباعة الدليل المعتمد لجامعة المستقبل"
                 >
                   <Printer className="w-3.5 h-3.5" />
-                  <span>طباعة PDF رسمي</span>
+                  <span>طباعة الدليل</span>
                 </button>
 
                 <button
                   onClick={() => onOpenShareCardModal(guide)}
                   className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-light py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-slate-200/80"
-                  title="بطاقة الجيب المختصرة للطباعة السريعة"
+                  title="بطاقة الجيب المختصرة"
                 >
                   <Share2 className="w-3.5 h-3.5 text-teal-700" />
                   <span>بطاقة الجيب</span>

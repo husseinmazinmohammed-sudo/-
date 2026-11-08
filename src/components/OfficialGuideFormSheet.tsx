@@ -33,11 +33,11 @@ export const OfficialGuideFormSheet: React.FC<OfficialGuideFormSheetProps> = ({
         pagesCount={1}
       />
 
-      {/* 2. Section I: Unified Document Identification Table */}
+      {/* 2. Section I: Document Identification Table */}
       <div className="space-y-1.5">
         <div className="bg-teal-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-t-lg flex items-center justify-between">
           <span>القسم الأول: بيانات الوثيقة القياسية والمجال التطبيقي</span>
-          <span className="font-mono text-[11px] text-teal-100">SECTION 01 · DOCUMENT IDENTIFICATION</span>
+          <span className="text-[11px] text-teal-100 font-light">معتمد رسمياً</span>
         </div>
         <table className="w-full text-right border-collapse border border-slate-300 text-xs">
           <tbody>
@@ -57,7 +57,7 @@ export const OfficialGuideFormSheet: React.FC<OfficialGuideFormSheetProps> = ({
             </tr>
             <tr className="border-b border-slate-300">
               <td className="py-2 px-3 bg-teal-50/70 font-semibold text-teal-950 border-l border-slate-300">
-                العنوان القياسي (EN):
+                العنوان باللغة الإنجليزية:
               </td>
               <td colSpan={3} className="py-2 px-3 font-mono text-xs text-slate-700 text-left" dir="ltr">
                 {guide.englishTitle}
@@ -79,7 +79,7 @@ export const OfficialGuideFormSheet: React.FC<OfficialGuideFormSheetProps> = ({
       <div className="space-y-1.5">
         <div className="bg-teal-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-t-lg flex items-center justify-between">
           <span>القسم الثاني: المرتكزات والقواعد الإلزامية للسلامة المهنية والسريرية</span>
-          <span className="font-mono text-[11px] text-teal-100">SECTION 02 · MANDATORY SAFETY RULES</span>
+          <span className="text-[11px] text-teal-100 font-light">قواعد ملزمة</span>
         </div>
         <table className="w-full text-right border-collapse border border-slate-300 text-xs">
           <thead>
@@ -113,7 +113,7 @@ export const OfficialGuideFormSheet: React.FC<OfficialGuideFormSheetProps> = ({
       <div className="space-y-1.5">
         <div className="bg-teal-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-t-lg flex items-center justify-between">
           <span>القسم الثالث: {guide.specTable.title}</span>
-          <span className="font-mono text-[11px] text-teal-100">SECTION 03 · STANDARD PARAMETERS</span>
+          <span className="text-[11px] text-teal-100 font-light">المعايير القياسية</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-right border-collapse border border-slate-300 text-xs">
@@ -157,7 +157,7 @@ export const OfficialGuideFormSheet: React.FC<OfficialGuideFormSheetProps> = ({
       <div className="space-y-1.5">
         <div className="bg-teal-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-t-lg flex items-center justify-between">
           <span>القسم الرابع: جدول البروتوكول التنفيذي الميداني وقائمة الفحص الحرجة</span>
-          <span className="font-mono text-[11px] text-teal-100">SECTION 04 · SOP EXECUTION MATRIX</span>
+          <span className="text-[11px] text-teal-100 font-light">قائمة التدقيق</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-right border-collapse border border-slate-300 text-xs">
